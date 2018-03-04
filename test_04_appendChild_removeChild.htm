@@ -2,6 +2,7 @@
 <html>
 <head>
   <title></title>
+  <!-- //////////////////// Utilisation des fontawesome en CSS -->
   <link href="public/fontawesome/fontawesome-all.css" rel="stylesheet">
 </head>
   <style type="text/css">
@@ -45,7 +46,7 @@
 let elmTBODY = document.querySelector('.tableau tbody')
 
 let  i =0
-//////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////// Ajouter une ligne 
 let elmAjouter = document.getElementById('ajoute')
 elmAjouter.addEventListener('click', function(){
 
@@ -70,7 +71,7 @@ elmAjouter.addEventListener('click', function(){
   i++
 })
 
-
+///////////////////////////////////////////////////////////////// Détruire une ligne
     function detruire(e){
         console.log(e.target.id)
         console.log(e.target.tagName)
