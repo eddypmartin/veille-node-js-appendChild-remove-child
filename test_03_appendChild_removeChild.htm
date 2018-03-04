@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style type="text/css">
+    [contenteditable=true]:empty:before {
+    content: attr(placeholder);
+    display: block; /* pour Firefox */
+    color :  #ccc;
+    }
+
+
+  </style>
+</head>
+<body>
+  <button id="ajoute">ajoute</button>
+
+<table class='tableau'>
+ <thead>
+   <th>id</th>
+   <th>nom</th>
+   <th>prenom</th>      
+   <th>telephone</th>   
+   <th>Courriel</th>   
+ </thead> 
+ <tbody>
+ </tbody>
+</table>
+</body>
+
+<script type="text/javascript">
+  "use strict"
+
+let elmTBODY = document.querySelector('.tableau tbody')
+
+let  i =0
+//////////////////////////////////////////////////////////////////
+let elmAjouter = document.getElementById('ajoute')
+elmAjouter.addEventListener('click', function(){
+
+  let elmTr =   document.createElement('tr')
+  console.log(elmTr.tagName)
+ 
+  let sLigne = '<td>' + i + '</td>' 
+              + '<td contenteditable="true" placeholder="Nom"></td>'
+              + '<td contenteditable="true" placeholder="Prénom"></td>'
+              + '<td contenteditable="true" placeholder="Téléphone"></td>'
+              + '<td contenteditable="true" placeholder="Courriel"></td>'                        
+  elmTr.innerHTML = sLigne
+  let elmDetruire = document.createElement('th')
+  elmDetruire.classList.add('detruire')
+  elmDetruire.id = i
+  elmDetruire.innerHTML = 'Détruire'
+  elmTr.appendChild(elmDetruire)
+  elmTBODY.appendChild(elmTr)
+  elmDetruire.addEventListener('click',detruire, false)
+  i++
+})
+
+
+function detruire(e){
+    console.log(e.target.id)
+    e.target.removeEventListener('click', detruire, false)
+    elmTBODY.removeChild(e.target.parentNode)
+}
+
+
+
+</script>
+</html>
+<body>

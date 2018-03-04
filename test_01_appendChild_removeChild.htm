@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <button id="ajoute">ajoute</button>
+  <button id="retire">Retire</button>
+<ul id='list'></ul>
+  
+
+</body>
+
+<script type="text/javascript">
+  "use strict"
+
+let elmUl = document.querySelector('ul')
+let elmLi =   document.createElement('li')
+let elmText = document.createTextNode('oui')
+elmLi.appendChild(elmText)
+elmUl.appendChild(elmLi)
+
+  elmLi =   document.createElement('li')
+  elmText = document.createTextNode('oui')
+  elmLi.appendChild(elmText)
+  elmUl.appendChild(elmLi)
+
+let elmAjouter = document.getElementById('ajoute')
+elmAjouter.addEventListener('click', function(){
+  console.log('passe')
+  let elmLi =   document.createElement('li')
+  let elmText = document.createTextNode('oui')
+  elmLi.appendChild(elmText)
+  elmUl.appendChild(elmLi)
+})
+
+let elmRetirer = document.getElementById('retire')
+elmRetirer.addEventListener('click', function(){
+  console.log('passe')
+  let elmLi = document.querySelector('ul li:last-child')
+  console.log(elmLi.tagName)
+  elmUl.removeChild(elmLi)
+})
+
+
+
+</script>
+
+
+</html>
+<body>

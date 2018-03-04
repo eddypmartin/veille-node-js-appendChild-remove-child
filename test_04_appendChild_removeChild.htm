@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link href="public/fontawesome/fontawesome-all.css" rel="stylesheet">
+</head>
+  <style type="text/css">
+    [contenteditable=true]:empty:before {
+    content: attr(placeholder);
+    display: block; /* pour Firefox */
+    color :  #ccc;
+    }
+
+
+  </style>
+
+</head>
+<body>
+<div style="font-size:3em; color:Tomato">
+  <i class="fas fa-camera-retro"></i>
+</div>
+
+  <button id="ajoute">ajoute</button>
+  <!--user icon in two different styles-->
+  <i class="fas fa-user"></i>
+  <i class="far fa-user"></i>
+  <!--brand icon-->
+  <i class="fab fa-github-square"></i>
+<table class='tableau'>
+ <thead>
+   <th>id</th>
+   <th>nom</th>
+   <th>prenom</th>      
+   <th>telephone</th>   
+   <th>Courriel</th>   
+ </thead> 
+ <tbody>
+ </tbody>
+</table>
+</body>
+
+<script type="text/javascript">
+  "use strict"
+
+let elmTBODY = document.querySelector('.tableau tbody')
+
+let  i =0
+//////////////////////////////////////////////////////////////////
+let elmAjouter = document.getElementById('ajoute')
+elmAjouter.addEventListener('click', function(){
+
+  let elmTr =   document.createElement('tr')
+  console.log(elmTr.tagName)
+ 
+  let sLigne = '<td>' + i + '</td>' 
+              + '<td contenteditable="true" placeholder="Nom"></td>'
+              + '<td contenteditable="true" placeholder="Prénom"></td>'
+              + '<td contenteditable="true" placeholder="Téléphone"></td>'
+              + '<td contenteditable="true" placeholder="Courriel"></td>'                        
+  elmTr.innerHTML = sLigne
+  let elmTh = document.createElement('th')
+  let elmButton = document.createElement('button')
+  elmButton.id = i
+  elmButton.classList.add('detruire')
+  elmButton.innerHTML= '<i class="fas fa-trash-alt"></i>'
+  elmTh.appendChild(elmButton)
+  elmTr.appendChild(elmTh)
+  elmTBODY.appendChild(elmTr)
+  elmButton.addEventListener('click',detruire, false)
+  i++
+})
+
+
+    function detruire(e){
+        console.log(e.target.id)
+        console.log(e.target.tagName)
+        let obj
+        /* 
+         e.target, dépendant de l'endroit où on click,
+         peut-être  I ou BUTTON
+        */
+        if (e.target.tagName == 'I')
+          {
+             obj = e.target.parentNode
+             console.log(obj.tagName)
+          }
+        else {
+            obj = e.target
+            console.log(obj.tagName)
+         } 
+           console.log(obj.parentNode.parentNode)
+        e.target.removeEventListener('click', detruire, false)
+        elmTBODY.removeChild(obj.parentNode.parentNode)
+    }
+</script>
+</html>
+<body>

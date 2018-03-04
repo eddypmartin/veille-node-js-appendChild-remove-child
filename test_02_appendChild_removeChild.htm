@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <button id="ajoute">ajoute</button>
+
+<ul id='list'></ul>
+  
+
+</body>
+
+<script type="text/javascript">
+  "use strict"
+
+let elmUl = document.querySelector('ul')
+
+// let elmLi =   document.createElement('li')
+// let elmButton=   document.createElement('button')
+// elmButton.classList.add('retire')
+// elmLi.appendChild(elmButton)
+// let elmText = document.createTextNode('oui')
+// elmLi.appendChild(elmText)
+// elmUl.appendChild(elmLi)
+
+  // elmLi =   document.createElement('li')
+  // elmText = document.createTextNode('oui')
+  // elmLi.appendChild(elmText)
+  // elmUl.appendChild(elmLi)
+let  i =0
+//////////////////////////////////////////////////////////////////
+let elmAjouter = document.getElementById('ajoute')
+elmAjouter.addEventListener('click', function(){
+
+  let elmLi =   document.createElement('li')
+  let elmText = document.createTextNode('oui')
+  elmLi.appendChild(elmText)
+  let elmButton=   document.createElement('button')
+  let elmID = document.createTextNode(i)
+  elmButton.classList.add('retire')
+  elmButton.id = i
+  elmButton.appendChild(elmID)
+  elmLi.appendChild(elmButton)
+  elmButton.addEventListener('click',retire, false)
+  elmUl.appendChild(elmLi)
+  i++
+})
+
+let elmRetire = document.getElementsByClassName('retire')
+console.log(elmRetire.length)
+for (let elm of elmRetire)
+{
+    elm.addEventListener('click',retire, false)
+}
+
+function retire(e){
+    console.log(e.target.id)
+    e.target.removeEventListener('click', retire, false)
+    elmUl.removeChild(e.target.parentNode)
+}
+
+
+
+</script>
+</html>
+<body>
